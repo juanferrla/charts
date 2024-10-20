@@ -23,7 +23,5 @@ spec:
       helm:
         valueFiles:
           - environments/values-dev.yaml
-          - environments/values-test.yaml
-          - environments/values-stage.yaml
-          - environments/values-prod.yaml
+
 
