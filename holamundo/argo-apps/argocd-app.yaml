@@ -1,16 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: devops
+spec:
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
   namespace: holamundo
 spec:
-  project: default
+  project: data
   source:
     repoURL: 'https://github.com/juanferrla/charts.git'
     targetRevision: HEAD
     path: holamundo
   destination:
-    server: 'https://192.168.49.2:8443'
+    server: 'https://kubernetes.default.svc'
     namespace: holamundo
   syncPolicy:
     automated:
@@ -26,4 +41,4 @@ spec:
           - environments/values-test.yaml
           - environments/values-stage.yaml
           - environments/values-prod.yaml
-  project: 'data'
+
