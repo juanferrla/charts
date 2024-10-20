@@ -1,25 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: default
-  namespace: devops
-spec:
-  sourceRepos:
-    - '*'
-  destinations:
-    - namespace: '*'
-      server: '*'
-  clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
   namespace: holamundo
 spec:
-  project: data
+  project: default
   source:
     repoURL: 'https://github.com/juanferrla/charts.git'
     targetRevision: HEAD
