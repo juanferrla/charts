@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "myapp.fullname" . }}
+  name: {{ include "myapp.fullname" . }}
   labels:
-    app: {{ template "myapp.name" . }}
+    app: {{ include "myapp.name" . }}
     environment: {{ .Values.environment | default "dev" }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "myapp.name" . }}
+      app: {{ include "myapp.name" . }}
   template:
     metadata:
       labels:
-        app: {{ template "myapp.name" . }}
+        app: {{ include "myapp.name" . }}
         environment: {{ .Values.environment | default "dev" }}
     spec:
       containers:
