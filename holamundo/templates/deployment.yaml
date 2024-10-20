@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "myapp.fullname" . }}
+  name: {{ include "myapp.name" . }}
   labels:
     app: {{ include "myapp.name" . }}
     environment: {{ .Values.environment | default "dev" }}
