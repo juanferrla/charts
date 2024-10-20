@@ -26,3 +26,4 @@ spec:
           - environments/values-test.yaml
           - environments/values-stage.yaml
           - environments/values-prod.yaml
+  project: 'data'
