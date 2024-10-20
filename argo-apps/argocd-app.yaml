@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/myorg/myapp-chart.git'
+    targetRevision: HEAD
+    path: myapp-chart
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: myapp-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  sources:
+    - repoURL: 'https://github.com/myorg/myapp-chart.git'
+      targetRevision: HEAD
+      path: myapp-chart
+      helm:
+        valueFiles:
+          - environments/values-dev.yaml
+          - environments/values-test.yaml
+          - environments/values-stage.yaml
+          - environments/values-prod.yaml
