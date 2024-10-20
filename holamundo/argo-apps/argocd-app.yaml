@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
-  namespace: argocd
+  namespace: holamundo
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/myorg/myapp-chart.git'
+    repoURL: 'https://github.com/juanferrla/charts.git'
     targetRevision: HEAD
-    path: myapp-chart
+    path: holamundo
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: myapp-dev
@@ -17,9 +17,9 @@ spec:
       prune: true
       selfHeal: true
   sources:
-    - repoURL: 'https://github.com/myorg/myapp-chart.git'
+    - repoURL: 'https://github.com/juanferrla/charts.git'
       targetRevision: HEAD
-      path: myapp-chart
+      path: holamundo
       helm:
         valueFiles:
           - environments/values-dev.yaml
