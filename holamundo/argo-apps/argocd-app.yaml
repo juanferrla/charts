@@ -11,7 +11,7 @@ spec:
     path: holamundo
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: myapp-dev
+    namespace: holamundo
   syncPolicy:
     automated:
       prune: true
